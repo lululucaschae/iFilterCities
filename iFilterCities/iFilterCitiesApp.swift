@@ -11,7 +11,7 @@ import SwiftUI
 struct iFilterCitiesApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }
