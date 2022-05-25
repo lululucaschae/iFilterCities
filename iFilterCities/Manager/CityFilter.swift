@@ -8,9 +8,7 @@
 import Foundation
 import SwiftUI
 
-func CityFilter(cities: [City]) -> [City] {
-    let citiesPerCountry = 5
-    let totalCities = 100
+func CityFilter(cities: [City], citiesPerCountry: Int, totalCities: Int) -> [City] {
     
     var container = [City]()
     var total = 0

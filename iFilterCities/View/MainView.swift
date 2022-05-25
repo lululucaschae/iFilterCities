@@ -10,16 +10,26 @@ import SwiftUI
 struct MainView: View {
     @State private var isExportingDocument = false
     @State private var counter = 0
+    @State private var citiesPerCountry = 3
+    @State private var totalCities = 100
     let cities: [City] = Bundle.main.decode("cities.json")
 
     var body: some View {
-        let filteredCities = CityFilter(cities: cities)
+        let filteredCities = CityFilter(cities: cities, citiesPerCountry: citiesPerCountry, totalCities: totalCities)
         let data = Bundle.main.encode(file: filteredCities)
         let url = getDocumentsDirectory().appendingPathComponent("sample.json")
         
 
         NavigationView {
             VStack {
+                Form {
+                    Stepper("\(citiesPerCountry) cities per country", value: $citiesPerCountry, in: 1...10)
+                    Picker("Number of cities", selection: $totalCities) {
+                        ForEach(50...500, id: \.self) {number in
+                            Text("\(number)")
+                        }
+                    }
+                }
                 List {
                     ForEach(filteredCities.indices, id: \.self) { i in
                         HStack {
@@ -40,16 +50,25 @@ struct MainView: View {
 //                        }
 //                    }
                 }
-                Button("Save") {
-                    do {
-                        try data.write(to: url)
-                        self.isExportingDocument = true
-                    } catch {
-                        print(error.localizedDescription)
+                HStack {
+                    Spacer()
+                    NavigationLink("View in map") {
+                        MapView(cities: filteredCities)
                     }
+                    Spacer()
+                    Button("Save database") {
+                        do {
+                            try data.write(to: url)
+                            self.isExportingDocument = true
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
+                    .background(DocumentInteractionController($isExportingDocument,
+                                                          url: url))
+                    Spacer()
+
                 }
-                .background(DocumentInteractionController($isExportingDocument,
-                    url: url))
             }
             .navigationTitle("Cities")
         }
