@@ -7,22 +7,34 @@
 
 import Foundation
 import SwiftUI
+import MapKit
 
 func CityFilter(cities: [City], citiesPerCountry: Int, totalCities: Int) -> [City] {
-    
     var container = [City]()
     var total = 0
-    for city in cities {
-        let thisCountry = city.country
+    for newCity in cities {
+        let thisCountry = newCity.country
         var counter = 0
-        for city in container {
-            if (city.country == thisCountry) {
+        var rangeCheck = true
+        for existingCity in container {
+            if (existingCity.country == thisCountry) {
                 counter += 1
             }
         }
         if counter < citiesPerCountry && total < totalCities {
-            container.append(city)
-            total += 1
+            for existingcity in container {
+                let distance = getDistance(city1: newCity, city2: existingcity)
+                if distance < 500 {
+                    rangeCheck = false
+                }
+            }
+            if rangeCheck == true {
+                container.append(newCity)
+                total += 1
+                
+            }
+            
+            
         }
     }
 

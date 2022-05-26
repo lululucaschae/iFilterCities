@@ -26,6 +26,8 @@ struct MapView: View {
                 MapAnnotation(coordinate: location.coordinate) {
                     Circle()
                         .stroke(.red, lineWidth: 3)
+                        .background(Circle().foregroundColor(Color.red))
+                        .opacity(0.1)
                         .frame(width: 44, height: 44)
                 }
             }

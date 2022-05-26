@@ -36,3 +36,11 @@ func CityLocation(cities: [City]) -> [Location] {
     
     return locationContainer
 }
+
+
+func getDistance(city1: City, city2: City) -> Double {
+    let coordinate1 = CLLocation(latitude: city1.lat ?? 0, longitude: city1.lng ?? 0)
+    let coordinate2 = CLLocation(latitude: city2.lat ?? 0, longitude: city2.lng ?? 0)
+    let distance = Double(coordinate1.distance(from: coordinate2)) / 1000
+    return distance
+}
