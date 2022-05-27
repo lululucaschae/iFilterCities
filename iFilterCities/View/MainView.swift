@@ -12,10 +12,12 @@ struct MainView: View {
     @State private var counter = 0
     @State private var citiesPerCountry = 3
     @State private var totalCities = 100
+    @State private var distanceThreashould = 100
     let cities: [City] = Bundle.main.decode("cities.json")
+    let capitals: [City] = Bundle.main.decode("capitals.json")
 
     var body: some View {
-        let filteredCities = CityFilter(cities: cities, citiesPerCountry: citiesPerCountry, totalCities: totalCities)
+        let filteredCities = CityFilter(cities: cities, capitals: capitals, citiesPerCountry: citiesPerCountry, totalCities: totalCities, distanceThreashould: Double(distanceThreashould))
         let data = Bundle.main.encode(file: filteredCities)
         let url = getDocumentsDirectory().appendingPathComponent("sample.json")
         
@@ -29,6 +31,7 @@ struct MainView: View {
                             Text("\(number)")
                         }
                     }
+
                 }
                 List {
                     ForEach(filteredCities.indices, id: \.self) { i in
@@ -40,15 +43,6 @@ struct MainView: View {
                             Text(String(filteredCities[i].population ?? 0))
                         }
                     }
-                    
-//                    ForEach(filteredCities, id: \.self) { city in
-//                        HStack {
-//                            Text("\(city.city ?? "N/A"),")
-//                            Text(city.country ?? "N/A")
-//                            Spacer()
-//                            Text(String(city.population ?? 0))
-//                        }
-//                    }
                 }
                 HStack {
                     Spacer()

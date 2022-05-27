@@ -9,13 +9,14 @@ import Foundation
 import SwiftUI
 import MapKit
 
-func CityFilter(cities: [City], citiesPerCountry: Int, totalCities: Int) -> [City] {
-    var container = [City]()
+func CityFilter(cities: [City], capitals: [City], citiesPerCountry: Int, totalCities: Int, distanceThreashould: Double) -> [City] {
+    var container = capitals
     var total = 0
     for newCity in cities {
         let thisCountry = newCity.country
         var counter = 0
         var rangeCheck = true
+        var isCapital = false
         for existingCity in container {
             if (existingCity.country == thisCountry) {
                 counter += 1
@@ -24,11 +25,14 @@ func CityFilter(cities: [City], citiesPerCountry: Int, totalCities: Int) -> [Cit
         if counter < citiesPerCountry && total < totalCities {
             for existingcity in container {
                 let distance = getDistance(city1: newCity, city2: existingcity)
-                if distance < 500 {
+                if distance < distanceThreashould && newCity.country == existingcity.country {
                     rangeCheck = false
                 }
+                if existingcity.city == newCity.city {
+                    isCapital = true
+                }
             }
-            if rangeCheck == true {
+            if rangeCheck == true && isCapital == false {
                 container.append(newCity)
                 total += 1
                 
