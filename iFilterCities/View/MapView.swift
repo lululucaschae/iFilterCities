@@ -26,7 +26,7 @@ struct MapView: View {
                         .stroke(.red, lineWidth: 3)
                         .background(Circle().foregroundColor(Color.red))
                         .opacity(0.1)
-                        .frame(width: 44, height: 44)
+                        .frame(width: 12, height: 12)
                 }
             }
             .navigationTitle("Map")

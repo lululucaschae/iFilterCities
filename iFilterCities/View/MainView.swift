@@ -10,37 +10,47 @@ import SwiftUI
 struct MainView: View {
     @State private var isExportingDocument = false
     @State private var counter = 0
-    @State private var citiesPerCountry = 3
-    @State private var totalCities = 100
-    @State private var distanceThreashould = 100
+    @State private var citiesPerCountry = 30
+    @State private var totalCities = 3000
+    @State private var distanceThreashould = 30
     let cities: [City] = Bundle.main.decode("cities.json")
     let capitals: [City] = Bundle.main.decode("capitals.json")
+    let stations: [Station] = Bundle.main.decode("stations.json")
+
 
     var body: some View {
         let filteredCities = CityFilter(cities: cities, capitals: capitals, citiesPerCountry: citiesPerCountry, totalCities: totalCities, distanceThreashould: Double(distanceThreashould))
-        let data = Bundle.main.encode(file: filteredCities)
+
+        
+        let citiesWithStaions = StationFilter(cities: filteredCities, stations: stations)
+
+        let data = Bundle.main.encode(file: citiesWithStaions)
+
         let url = getDocumentsDirectory().appendingPathComponent("sample.json")
+        
+
         
 
         NavigationView {
             VStack {
                 Form {
-                    Stepper("\(citiesPerCountry) cities per country", value: $citiesPerCountry, in: 1...10)
+                    Stepper("\(citiesPerCountry) cities per country", value: $citiesPerCountry, in: 1...20)
                     Picker("Number of cities", selection: $totalCities) {
-                        ForEach(50...500, id: \.self) {number in
+                        ForEach(50...3000, id: \.self) {number in
                             Text("\(number)")
                         }
                     }
 
                 }
                 List {
-                    ForEach(filteredCities.indices, id: \.self) { i in
+                    ForEach(citiesWithStaions.indices, id: \.self) { i in
                         HStack {
                             Text("\(i+1).")
-                            Text("\(filteredCities[i].city ?? "N/A"),")
-                            Text(filteredCities[i].country ?? "N/A")
+                            Text("\(citiesWithStaions[i].city ?? "N/A"),")
+                            Text(citiesWithStaions[i].country ?? "N/A")
                             Spacer()
-                            Text(String(filteredCities[i].population ?? 0))
+                            Text(String(citiesWithStaions[i].population ?? 0))
+                            Text(citiesWithStaions[i].station ?? "N/A")
                         }
                     }
                 }

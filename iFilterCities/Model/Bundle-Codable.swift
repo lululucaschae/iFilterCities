@@ -57,4 +57,15 @@ extension Bundle {
         }
         
     }
+    
+    func encode(file: [String]) -> Data {
+        let encoder = JSONEncoder()
+        do {
+            let encoded = try encoder.encode(file)
+            return encoded
+        } catch {
+            fatalError("Failed to encode \(file) to bundle. Error: \(error)")
+        }
+        
+    }
 }

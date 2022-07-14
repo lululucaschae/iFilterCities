@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		617C27C5284495BD007785C9 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 617C27C4284495BD007785C9 /* stations.json */; };
+		617C27C7284496DF007785C9 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617C27C6284496DF007785C9 /* Station.swift */; };
+		617C27C9284499ED007785C9 /* StationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617C27C8284499ED007785C9 /* StationFilter.swift */; };
+		617C27CB2844C3AF007785C9 /* UrlGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 617C27CA2844C3AF007785C9 /* UrlGenerator.swift */; };
 		61D9CCD1283CEDFB007835D2 /* iFilterCitiesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D9CCD0283CEDFB007835D2 /* iFilterCitiesApp.swift */; };
 		61D9CCD3283CEDFB007835D2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D9CCD2283CEDFB007835D2 /* MainView.swift */; };
 		61D9CCD5283CEDFD007835D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 61D9CCD4283CEDFD007835D2 /* Assets.xcassets */; };
@@ -25,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		617C27C4284495BD007785C9 /* stations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = stations.json; sourceTree = SOURCE_ROOT; };
+		617C27C6284496DF007785C9 /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		617C27C8284499ED007785C9 /* StationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationFilter.swift; sourceTree = "<group>"; };
+		617C27CA2844C3AF007785C9 /* UrlGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlGenerator.swift; sourceTree = "<group>"; };
 		61D9CCCD283CEDFB007835D2 /* iFilterCities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iFilterCities.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		61D9CCD0283CEDFB007835D2 /* iFilterCitiesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iFilterCitiesApp.swift; sourceTree = "<group>"; };
 		61D9CCD2283CEDFB007835D2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -98,6 +106,7 @@
 			children = (
 				61D9CD13283F5F95007835D2 /* capitals.json */,
 				61D9CCDE283CEFB5007835D2 /* cities.json */,
+				617C27C4284495BD007785C9 /* stations.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -108,6 +117,7 @@
 				61D9CCE2283CF108007835D2 /* Bundle-Codable.swift */,
 				61D9CCE0283CEFD9007835D2 /* City.swift */,
 				61D9CD0D283E2352007835D2 /* Location.swift */,
+				617C27C6284496DF007785C9 /* Station.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,6 +128,8 @@
 				61D9CCE7283CF30C007835D2 /* CityFilter.swift */,
 				61D9CCE9283CFCAF007835D2 /* getDocumentDirectory.swift */,
 				61D9CD0F283E2676007835D2 /* CityLocation.swift */,
+				617C27C8284499ED007785C9 /* StationFilter.swift */,
+				617C27CA2844C3AF007785C9 /* UrlGenerator.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -202,6 +214,7 @@
 				61D9CCD8283CEDFD007835D2 /* Preview Assets.xcassets in Resources */,
 				61D9CD14283F5F95007835D2 /* capitals.json in Resources */,
 				61D9CCD5283CEDFD007835D2 /* Assets.xcassets in Resources */,
+				617C27C5284495BD007785C9 /* stations.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +228,7 @@
 				61D9CCD3283CEDFB007835D2 /* MainView.swift in Sources */,
 				61D9CD0C283E22EF007835D2 /* MapView.swift in Sources */,
 				61D9CCED283DB874007835D2 /* DocumentInteractionController.swift in Sources */,
+				617C27C9284499ED007785C9 /* StationFilter.swift in Sources */,
 				61D9CCD1283CEDFB007835D2 /* iFilterCitiesApp.swift in Sources */,
 				61D9CD0E283E2352007835D2 /* Location.swift in Sources */,
 				61D9CCE1283CEFD9007835D2 /* City.swift in Sources */,
@@ -222,6 +236,8 @@
 				61D9CCEA283CFCAF007835D2 /* getDocumentDirectory.swift in Sources */,
 				61D9CD16283F6D86007835D2 /* ListView.swift in Sources */,
 				61D9CCE3283CF108007835D2 /* Bundle-Codable.swift in Sources */,
+				617C27CB2844C3AF007785C9 /* UrlGenerator.swift in Sources */,
+				617C27C7284496DF007785C9 /* Station.swift in Sources */,
 				61D9CD10283E2676007835D2 /* CityLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,8 +17,10 @@ struct City: Codable, Hashable {
 //    "iso3": "JPN",
 //    "population": 39105000
     
-    let city, city_ascii, country, iso3: String?
-    let lat, lng: Double?
-    let population: Int?
+    var city, city_ascii, country, iso3: String?
+    var lat, lng: Double?
+    var population: Int?
+    var station: String?
+    var hourlyUrl: String?
     
 }
